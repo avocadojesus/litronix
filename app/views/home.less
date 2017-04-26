@@ -1,0 +1,84 @@
+.Home-View {
+  width: 100%;
+  height: 100%;
+  .main-container {
+    width: 100%;
+    height: ~"calc(100% - 48px)";
+    position: relative;
+    overflow-y:auto;
+    .logo-container {
+      width: 100%;
+      height: 150px;
+      position: relative;
+      text-align: center;
+      .logo-img {
+        width: 970px;
+        height: 100%;
+        background: url(/img/litronix-pump-gas-logo.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: inline-block;
+      }
+    }
+    .backdrop-container {
+      position: relative;
+      width: 100%;
+      height: ~"calc(100% - 150px)";
+      .links {
+        position: absolute;
+        right: 0;
+        text-align: right;
+        background: rgba(218, 26, 58, 1);
+        padding: 50px;
+        a {
+          display: block;
+          color: white;
+          text-decoration: none;
+        }
+      }
+      .backdrop-img {
+        width: 100%;
+        height: 100%;
+        background: url(/img/litronix-pump-gas-background-img.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    }
+    .banner {
+      padding: 100px 20px;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#5499d2+0,4368b2+100 */
+      background: #5499d2; /* Old browsers */
+      background: -moz-linear-gradient(top, #5499d2 0%, #4486af 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, #5499d2 0%,#4486af 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, #5499d2 0%,#4486af 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5499d2', endColorstr='#4486af',GradientType=0 ); /* IE6-9 */
+      .title {
+        font-size: 50px;
+        color: white;
+        text-decoration: none;
+        font-weight: 100;
+        border: solid thin white;
+        padding: 10px 30px;
+        border-radius: 46px;
+      }
+    }
+  }
+  .audio-player-outer-container {
+    position: absolute;
+    bottom: 0;
+    height: 48px;
+    width: 100%;
+  }
+}
+
+@media(max-width: 700px) {
+  .Home-View {
+    .logo-container {
+      height: 100px;
+    }
+    .backdrop-container {
+      top: 100px;
+      height: ~"calc(100% - 100px)";
+    }
+  }
+}
