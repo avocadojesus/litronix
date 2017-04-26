@@ -26,18 +26,18 @@ export default class HomeView extends React.Component {
           </div>
           <div className='backdrop-container'>
             <div className='links'>
-              <a href='/instagram' >instagram</a>
-              <a href='/facebook' >facebook</a>
-              <a href='/blog' >blog</a>
-              <a href='/soundcloud' >soundcloud</a>
-              <a href='/tour' >tour</a>
-              <a href='/contact' >contact</a>
+              <a href='https://www.instagram.com/litronix/' >instagram</a>
+              <a href='https://www.facebook.com/litronix1/' >facebook</a>
+              <a href='http://litronix-blog.tumblr.com/' >blog</a>
+              <a href='https://soundcloud.com/litronix1' >soundcloud</a>
+              <a href='http://www.bandsintown.com/LITRONIX' >tour</a>
+              <a href='mailto:kevinlitrow@gmail.com' >contact</a>
             </div>
             <div className='backdrop-img'></div>
           </div>
         </div>
         <div className='audio-player-outer-container'>
-          <AudioPlayer src="/audio/default.mp3" />
+          <AudioPlayer src="/audio/maggot.m4a" />
         </div>
       </div>
     )
