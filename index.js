@@ -21,6 +21,6 @@ app.get('*', function(req, res) {
   res.render(__dirname + '/views/index.ejs');
 });
 
-app.listen(3004, function() {
-  console.log('Server is up at 3004')
+app.listen(3005, function() {
+  console.log('Server is up at 3005')
 });
