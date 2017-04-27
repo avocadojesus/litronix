@@ -26,12 +26,28 @@ export default class HomeView extends React.Component {
           </div>
           <div className='backdrop-container'>
             <div className='links'>
-              <a href='https://www.instagram.com/litronix/' >instagram</a>
-              <a href='https://www.facebook.com/litronix1/' >facebook</a>
-              <a href='http://litronix-blog.tumblr.com/' >blog</a>
-              <a href='https://soundcloud.com/litronix1' >soundcloud</a>
-              <a href='http://www.bandsintown.com/LITRONIX' >tour</a>
-              <a href='mailto:kevinlitrow@gmail.com' >contact</a>
+              <div className='left-container'>
+                <div className='link-container'>
+                  <a href='https://www.instagram.com/litronix/' >instagram</a>
+                </div>
+                <div className='link-container'>
+                  <a href='https://www.facebook.com/litronix1/' >facebook</a>
+                </div>
+                <div className='link-container'>
+                  <a href='http://litronix-blog.tumblr.com/' >blog</a>
+                </div>
+              </div>
+              <div className='right-container'>
+                <div className='link-container'>
+                  <a href='https://soundcloud.com/litronix1' >soundcloud</a>
+                </div>
+                <div className='link-container'>
+                  <a href='http://www.bandsintown.com/LITRONIX' >tour</a>
+                </div>
+                <div className='link-container'>
+                  <a href='mailto:kevinlitrow@gmail.com' >contact</a>
+                </div>
+              </div>
             </div>
             <div className='backdrop-img'></div>
           </div>

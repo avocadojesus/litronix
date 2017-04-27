@@ -6,6 +6,7 @@
     height: ~"calc(100% - 48px)";
     position: relative;
     overflow-y:auto;
+    overflow-x:hidden;
     .logo-container {
       width: 100%;
       height: 150px;
@@ -25,15 +26,22 @@
       width: 100%;
       height: ~"calc(100% - 150px)";
       .links {
+        text-align: left;
+        // background: #ecf3f5;
+        padding: 15px 10px;
         position: absolute;
-        right: 0;
-        text-align: right;
-        background: rgba(218, 26, 58, 1);
-        padding: 50px;
+        .link-container {
+          margin-bottom: 10px;
+        }
         a {
-          display: block;
-          color: white;
+          // width: 33%;
+          // display: block;
+          color: #3a403a;
           text-decoration: none;
+          font-family: monospace;
+          background: white;
+          font-size: 18px;
+          padding: 3px 10px;
         }
       }
       .backdrop-img {
@@ -70,15 +78,98 @@
     width: 100%;
   }
 }
+.left-container,
+.right-container {
+  width: 100%;
+  display: inline-block;
+}
+
+@media(max-width: 920px) {
+  .Home-View {
+    .main-container {
+      .logo-container {
+        height: 125px;
+        .logo-img {
+          width: 100%;
+          background-size: cover;
+        }
+      }
+      .backdrop-container {
+        height: ~"calc(100% - 125px)";
+      }
+    }
+  }
+}
+
+@media(max-width: 800px) {
+  .left-container,
+  .right-container {
+    width: 100%;
+  }
+  .Home-View {
+    .main-container {
+      .logo-container {
+        height: 110px;
+        .logo-img {
+          width: 100%;
+          background-size: cover;
+        }
+      }
+      .backdrop-container {
+        height: ~"calc(100% - 110px)";
+      }
+    }
+  }
+}
 
 @media(max-width: 700px) {
   .Home-View {
-    .logo-container {
-      height: 100px;
+    .main-container {
+      .logo-container {
+        height: 100px;
+      }
+      .backdrop-container {
+        height: ~"calc(100% - 100px)";
+      }
     }
-    .backdrop-container {
-      top: 100px;
-      height: ~"calc(100% - 100px)";
+  }
+}
+
+@media(max-width: 620px) {
+  .Home-View {
+    .main-container {
+      .logo-container {
+        height: 77px;
+      }
+      .backdrop-container {
+        height: ~"calc(100% - 77px)";
+      }
+    }
+  }
+}
+
+@media(max-width: 500px) {
+  .Home-View {
+    .main-container {
+      .logo-container {
+        height: 69px;
+      }
+      .backdrop-container {
+        height: ~"calc(100% - 69px)";
+      }
+    }
+  }
+}
+
+@media(max-width: 440px) {
+  .Home-View {
+    .main-container {
+      .logo-container {
+        height: 60px;
+      }
+      .backdrop-container {
+        height: ~"calc(100% - 60px)";
+      }
     }
   }
 }

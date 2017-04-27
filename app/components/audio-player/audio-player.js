@@ -113,13 +113,13 @@ var __component = React.createClass({
             {
               !this.state.playing &&
               <div className='play-btn' onClick={this.play}>
-                <Icon size={32} style={{color: '#ad142e', marginTop: '8px'}} icon={play} />
+                <Icon size={28} style={{color: '#f4fb3c', marginTop: '10px'}} icon={play} />
               </div>
             }
             {
               this.state.playing &&
               <div className='pause-btn' onClick={this.pause}>
-                <Icon size={32} style={{color: '#ad142e', marginTop: '8px'}} icon={pause} />
+                <Icon size={28} style={{color: '#f4fb3c', marginTop: '10px'}} icon={pause} />
               </div>
             }
           </div>
