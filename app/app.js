@@ -8,6 +8,7 @@ var browserHistory = require('react-router').browserHistory;
 var injectTapEventPlugin = require('react-tap-event-plugin');
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Home from './controllers/home';
+import Bio from './controllers/bio';
 import Photos from './controllers/photos';
 require('./app.less')
 injectTapEventPlugin();
@@ -18,6 +19,7 @@ window.onload = function() {
       <Router history={browserHistory}>
         <Route component={Home} name='home' path='/' ignoreScrollBehavior/>
         <Route component={Photos} name='photos' path='/photos' ignoreScrollBehavior/>
+        <Route component={Bio} name='bio' path='/bio' ignoreScrollBehavior/>
       </Router>
     </MuiThemeProvider>
   ), document.querySelector('#app-target'));
