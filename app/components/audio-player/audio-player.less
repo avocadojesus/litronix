@@ -28,30 +28,30 @@
   .audio-controls {
     width: 100%;
     float:left;
-    background: #808482;
+    background: white;
     .seeker{
       width: ~"calc(100% - 48px - 10px)";
       height:6px;
-      background:#a2a72d;
+      background:#d6d6d6;
       position:relative;
       float:left;
       top: 22px;
+      .progress{
+        height:100%;
+        background:#d2d2d2;
+        width:0;
+        position:absolute;
+        z-index:2;
+      }
     }
 
     .buffer{
       height:100%;
-      background:#a2a72d;
+      background:#b9b9b9;
       width:0;
       position:absolute;
       z-index:1;
     }
 
-    .seeker .progress{
-      height:100%;
-      background:#f4fb3c;
-      width:0;
-      position:absolute;
-      z-index:2;
-    }
   }
 }

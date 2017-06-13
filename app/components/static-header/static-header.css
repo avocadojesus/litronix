@@ -1,0 +1,118 @@
+.static-header {
+  float: left;
+  width: 100%;
+  padding: 0px;
+  height: 77px;
+}
+
+.static-header .title {
+  font-size: 64px;
+  display: inline-block;
+  float: left;
+  color: white;
+  margin-bottom: 8px;
+}
+
+
+.static-header .links {
+  font-size:18px;
+  text-align:right;
+  position:relative;
+  margin-top: 10px;
+  display: inline-block;
+  /*width: calc(100% - 450px);*/
+  float: right;
+  top: 35px;
+  z-index: 3;
+}
+
+.static-header .links a {
+  font-weight:100;
+  text-decoration: none;
+  margin-left: 20px;
+  padding: 2px 10px;
+  font-size: 18px;
+  color: #A2A2A2;
+}
+
+.static-header .links a[data-active='true'] {
+  color: #CACACA;
+}
+
+.static-header .right-sidebar-activator {
+  position: relative;
+  top: 0px;
+  left: 4px;
+  display: none !important;
+}
+
+.static-header .title .logo-img {
+  width:112px;
+  height: 69px;
+  background: url(/img/litronix-logo-trimmed.png);
+  background-size: cover;
+  position: absolute;
+  top: 20px;
+}
+
+@media(max-width:1050px) {
+  .static-header .title {
+    /*text-align: center;
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;*/
+    font-size: 45px;
+  }
+
+  /*.static-header .links {
+    text-align: center;
+    display: block;
+    float: none;
+    width: 100%;
+    margin-top: 50px;
+    top: 0px !important;
+  }*/
+
+  .static-header .links {
+    top: 9px;
+  }
+
+  .static-header .links a {
+    display: none;
+  }
+
+  .static-header .right-sidebar-activator {
+    display: inline-block !important;
+  }
+}
+
+@media(max-width: 600px) {
+  .static-header .title {
+    display: inline-block;
+    width: auto;
+    /*font-size: 30px;*/
+  }
+
+  .static-header .links {
+    display: inline-block;
+    text-align: right;
+    width: auto;
+    float: right;
+    margin-top: 8px;
+  }
+
+  .static-header .links a {
+    display: none;
+  }
+
+  .static-header .right-sidebar-activator {
+    display: inline-block !important;
+  }
+}
+
+@media(max-width:420px) {
+  .static-header .links {
+    text-align:center;
+  }
+}

@@ -1,0 +1,185 @@
+.Photos-View {
+  background: #000000;
+}
+
+.Photos-View .header .static-header {
+  /*background: #dedede;*/
+}
+
+.Photos-View .main-container {
+  margin-top: 69px;
+  background: #000000;
+}
+
+.Photos-View .room {
+
+}
+
+.Photos-View .room.template {
+  display: none;
+}
+
+.Photos-View .room .room-banner {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.Photos-View .room .room-banner .img {
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.Photos-View .room .room-banner .img-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(0,0,0,0.5);
+  top: 0;
+  left: 0;
+}
+
+.Photos-View .room.console .room-banner .img {
+  background-image: url(/img/toft-atb.jpeg);
+}
+
+.Photos-View .room .room-banner .title {
+  font-size: 30px;
+  color: #4a4a4a;
+  position: relative;
+  /* text-align: center; */
+  padding: 41px 30px;
+  background: #171717;
+  font-weight: 100;
+}
+
+.Photos-View .room .room-spec-list {
+  font-size: 18px;
+  padding: 50px 0;
+  color: #2f2f2f;
+  background: #ffffff;
+  font-family: Rubik, monospace;
+}
+
+.Photos-View .room .room-spec-list .description {
+  padding: 125px 150px;
+  font-size: 18px;
+  color: #777777;
+  background: #d4d2d4;
+  margin-bottom: 50px;
+  display: none;
+}
+
+.Photos-View .room .room-spec-list .image-container {
+  width: 22%;
+  display: inline-block;
+}
+
+.Photos-View .room .room-spec-list .image-container img {
+  width: 100%;
+  display: inline-block;
+}
+
+.Photos-View .room .room-spec-list .spec-container {
+  width: 33%;
+  display: inline-block;
+}
+
+.Photos-View .room .room-spec-list .spec {
+  margin-bottom: 18px;
+}
+
+.Photos-View .room .room-spec-list .spec .name {
+  display: inline-block;
+  width: 180px;
+  text-align: right;
+  padding: 0 10px 0 10px;
+  color: #2c4610;
+  margin: 0 10px;
+}
+
+.Photos-View .room .room-spec-list .spec .name span {
+  padding: 4px 10px 4px 10px;
+  border: solid thin black;
+  border-radius: 3px;
+}
+
+.Photos-View .room .room-spec-list .spec .value {
+  width: calc(100% - 220px);
+  display: inline-block;
+  color: black;
+}
+
+.Photos-View .room .room-item {
+  padding: 10px 30px;
+  background: white;
+  font-family: "Rubik", monospace;
+  border-bottom: solid thin #f9f9f9;
+}
+
+.Photos-View .room .room-item .img-container {
+  height: 75px;
+  width: 100px;
+  text-align: 100px;
+  display: inline-block;
+  text-align: right;
+}
+
+.Photos-View .room .room-item .img {
+  height: 100%;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.Photos-View .room .room-item .quantity {
+  border-radius: 3px;
+  border: solid thin #333333;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 32px;
+  color: #333333;
+  margin-top: 21px;
+  font-size: 16px;
+  margin-left: 20px;
+}
+
+.Photos-View .room .room-item .name {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 25px;
+  margin-left: 20px;
+  font-size: 20px;
+  color: #333333;
+}
+
+
+
+
+
+
+
+
+.Photos-View .image-container {
+  /*text-align: center;*/
+  padding: 0 25px;
+}
+
+.Photos-View .room-image {
+  width: calc(20% - 20px);
+  height: 0;
+  padding-bottom: calc(20% - 20px);
+  display: inline-block;
+  margin: 10px;
+  background-size: cover;
+}
+
+.Photos-View .room-image:hover {
+  border: solid thin white;
+  width: calc(20% - 22px);
+  padding-bottom: calc(20% - 22px);
+  cursor:pointer;
+}

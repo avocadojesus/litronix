@@ -1,0 +1,93 @@
+.track {
+  width:100%;
+  display: inline-block;
+  position:relative
+}
+
+.track:nth-child(even) {
+  background: #f1f1f1;
+}
+
+.track .title-container {
+  padding: 4px 5px 10px 15px;
+  /*border-bottom: solid thin #f1f1f1;*/
+}
+
+.track .wave-container {
+  display: inline-block;
+  width:100%;
+  position:relative;
+  margin:20px 0 30px 0;
+  background:#EFEFEF;
+  padding:10px 0;
+}
+
+.track[data-masked='true'] {
+  border: solid thin #d2cfc0;
+}
+
+.track .progress-backdrop {
+  position:absolute;
+  height:38px;
+  top: 11px;
+  z-index:2;
+  background: #ffdb61; /* Old browsers */
+  background: -moz-linear-gradient(left,  #ffdb61 0%, #ffb200 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  #ffdb61 0%,#ffb200 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  #ffdb61 0%,#ffb200 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffdb61', endColorstr='#ffb200',GradientType=1 ); /* IE6-9 */
+}
+
+.track .audio-backdrop {
+  width:100%;
+  position:absolute;
+  height: 38px;
+  top: 11px;
+  z-index:2;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#30f2b8+0,81efdb+100 */
+  background: #8d30f2; /* Old browsers */
+  background: -moz-linear-gradient(left,  #8d30f2 0%, #efaf81 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  #8d30f2 0%,#efaf81 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  #8d30f2 0%,#efaf81 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8d30f2', endColorstr='#efaf81',GradientType=1 ); /* IE6-9 */
+}
+
+.track .track-title {
+  display: inline-block;
+  position: relative;
+  top: -1px;
+  margin-left:10px;
+  font-size: 16px;
+}
+
+.track .play-btn {
+  display: inline-block;
+  outline: 0;
+  border:none;
+  cursor:pointer;
+}
+
+.track .play-icon {
+  margin-top: 3px;
+  position: relative;
+  top: 5px;
+}
+
+.track .pause-btn {
+  display: inline-block;
+  font-weight:bold;
+  outline: 0;
+  border:none;
+  cursor:pointer;
+}
+
+.track img {
+  width:100%;
+  height:40px;
+  position:relative;
+  z-index:3;
+}
+
+.track[data-loading='true'] {
+
+}
