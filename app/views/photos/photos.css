@@ -8,7 +8,7 @@
 
 .Photos-View .main-container {
   margin-top: 69px;
-  background: #000000;
+  background: #ffffff;
 }
 
 .Photos-View .room {
@@ -50,8 +50,9 @@
   position: relative;
   /* text-align: center; */
   padding: 41px 30px;
-  background: #171717;
+  /*background: #171717;*/
   font-weight: 100;
+  display: none;
 }
 
 .Photos-View .room .room-spec-list {
@@ -165,7 +166,7 @@
 
 .Photos-View .image-container {
   /*text-align: center;*/
-  padding: 0 25px;
+  padding: 30px 25px;
 }
 
 .Photos-View .room-image {

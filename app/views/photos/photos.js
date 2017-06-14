@@ -101,23 +101,9 @@ module.exports = React.createClass({
         <div
           className='main-container outer-container'
           data-is-scrolled-past-header={true} >
-          <div className='room template'>
-            <div className='room-banner'></div>
-            <div className='room-spec-list'>
-              <div className='spec'>
-                <div className='name'></div>
-                <div className='value'></div>
-              </div>
-            </div>
-            <div className='room-item'>
-              <img className='img'/>
-              <div className='quantity'></div>
-              <div className='name'></div>
-            </div>
-          </div>
           <div className='room console'>
             <div className='room-banner'>
-              <div className='title'>Console Room</div>
+              <div className='title'>Photos</div>
             </div>
             <div className='image-container'>
               {this.state.images.map((image, i) => {

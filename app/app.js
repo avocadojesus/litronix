@@ -10,6 +10,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Home from './controllers/home';
 import Bio from './controllers/bio';
 import Photos from './controllers/photos';
+import Videos from './controllers/videos';
 require('./app.less')
 injectTapEventPlugin();
 
@@ -20,6 +21,7 @@ window.onload = function() {
         <Route component={Home} name='home' path='/' ignoreScrollBehavior/>
         <Route component={Photos} name='photos' path='/photos' ignoreScrollBehavior/>
         <Route component={Bio} name='bio' path='/bio' ignoreScrollBehavior/>
+        <Route component={Videos} name='videos' path='/videos' ignoreScrollBehavior/>
       </Router>
     </MuiThemeProvider>
   ), document.querySelector('#app-target'));

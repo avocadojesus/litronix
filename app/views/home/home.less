@@ -3,7 +3,7 @@
   height: 100%;
   .main-container {
     width: 100%;
-    height: ~"calc(100% - 48px)";
+    height: ~"calc(100% - 0px)";
     position: relative;
     overflow-y:auto;
     overflow-x:hidden;
@@ -43,8 +43,8 @@
         display: inline-block;
         padding-top: 15%;
         .album-container {
-          width: 150px;
-          height: 150px;
+          width: 200px;
+          height: 200px;
           background-size: cover;
           display: inline-block;
           text-align: right;
@@ -55,16 +55,24 @@
             width: 100%;
             height: 100%;
             display: inline-block;
+            -webkit-box-shadow: 10px 14px 32px -14px rgba(0, 0, 0, 0.48);
+            -moz-box-shadow: 10px 14px 32px -14px rgba(0, 0, 0, 0.48);
+            box-shadow: 10px 14px 32px -14px rgba(0, 0, 0, 0.48);
           }
         }
         .text-container {
           display: inline-block;
           vertical-align: top;
           background: white;
-          padding: 20px;
-          margin-top: 15px;
+          padding: 10px;
+          margin-top: 52px;
+          -webkit-box-shadow: 10px 14px 32px -14px rgba(0, 0, 0, 0.48);
+          -moz-box-shadow: 10px 14px 32px -14px rgba(0, 0, 0, 0.48);
+          box-shadow: 10px 14px 32px -14px rgba(0, 0, 0, 0.48);
+          border-radius: 3px;
           .album-title {
             font-size: 20px;
+            margin-bottom: 10px;
           }
           .link-container {
             display: inline-block;
@@ -74,7 +82,8 @@
               text-decoration: none;
               font-weight: 100;
               font-size: 18px;
-              color: inherit;
+              color: #5891cb;
+              margin-bottom: 3px;
             }
           }
         }
@@ -123,7 +132,7 @@
         }
       }
       .backdrop-container {
-        height: ~"calc(100% - 125px)";
+        height: ~"calc(100% - 77px)";
       }
     }
   }

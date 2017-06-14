@@ -36,7 +36,7 @@ module.exports = React.createClass({
         <RightSidebar />
         <Header
           visible={true}
-          activeLink={"tour"} />
+          activeLink={"bio"} />
         <div
           className='main-container outer-container'
           data-is-scrolled-past-header={true} >

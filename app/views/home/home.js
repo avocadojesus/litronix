@@ -30,10 +30,10 @@ export default class HomeView extends React.Component {
                 <div className='album-image'></div>
               </div>
               <div className='text-container'>
-                <div className='album-title'>Pump The Gas</div>
+                <div className='album-title'>Pump The Gas - Out Now!</div>
                 <div className='link-container'>
-                  <a href='bandcamp-link'>Buy Now at Litronix Bandcamp</a>
-                  <a href='porchparty-link'>Buy Now at Porchparty Records</a>
+                  <a href='bandcamp-link'>Listen Now at Litronix Bandcamp</a>
+                  <a href='porchparty-link'>Listen Now at Porchparty Records</a>
                 </div>
                 <div className='link-container'></div>
               </div>
