@@ -1,6 +1,23 @@
 .Home-View {
   width: 100%;
   height: 100%;
+  background: #dde0e9;
+  .header {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    .static-header {
+      background: #dde0e9;
+      .links {
+        a {
+          color: #747a80;
+        }
+        a[data-active="true"] {
+          color: #504f4f;
+        }
+      }
+    }
+  }
   .main-container {
     width: 100%;
     height: ~"calc(100% - 0px)";

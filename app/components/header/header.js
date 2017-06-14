@@ -40,15 +40,9 @@ module.exports = React.createClass({
   },
   render: function() {
     var self = this
-    var title = this.state.username || "MATT COSTA"
+    var title = this.state.username || "LITRONIX"
     return (
       <div className='header' data-visible={this.props.visible}>
-        <Track
-          className="outer-container"
-          mode='header'
-          src='/audio/where-have-my-heros-gone.m4a'
-          title='Where Have My Heroes Gone'
-          trackId='wher-have-my-heros-gone'/>
         <StaticHeader className="outer-container" activeLink={this.props.activeLink} fontColor="#3f3f3e"/>
       </div>
     )

@@ -89,10 +89,9 @@ module.exports = React.createClass({
             onClick={this.__handleLinkClick}>
             BIO
           </a>
-          <a href='/contact'
+          <a href='mailto:litronixmanagement@gmail.com'
             data-theme='1'
-            data-active={this.props.activeLink === 'contact'}
-            onClick={this.__handleLinkClick}>
+            data-active={this.props.activeLink === 'contact'}>
             CONTACT
           </a>
           <RightSidebarActivator color={this.props.fontColor} />
