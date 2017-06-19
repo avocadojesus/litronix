@@ -107,7 +107,7 @@ module.exports = React.createClass({
           visible={this.state.curr_image_src ? true : false} />
         <Header
           visible={true}
-          activeLink={"tour"} />
+          activeLink={"photos"} />
         <div
           className='main-container outer-container'
           data-is-scrolled-past-header={true} >
