@@ -105,7 +105,7 @@ var __component = React.createClass({
   render: function() {
     return (
       <div className='audio-player-container'>
-        <audio ref='audio_player' className='audio-player'>
+        <audio ref='audio_player' className='audio-player' autoPlay>
           <source src={this.props.src} />
         </audio>
         <div className='audio-controls'>
@@ -113,13 +113,13 @@ var __component = React.createClass({
             {
               !this.state.playing &&
               <div className='play-btn' onClick={this.play}>
-                <Icon size={28} style={{color: '#d6d6d6', marginTop: '10px'}} icon={play} />
+                <Icon size={28} style={{color: 'rgb(249, 249, 249)', marginTop: '10px'}} icon={play} />
               </div>
             }
             {
               this.state.playing &&
               <div className='pause-btn' onClick={this.pause}>
-                <Icon size={28} style={{color: '#d6d6d6', marginTop: '10px'}} icon={pause} />
+                <Icon size={28} style={{color: 'rgb(249, 249, 249)', marginTop: '10px'}} icon={pause} />
               </div>
             }
           </div>

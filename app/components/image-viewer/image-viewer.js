@@ -18,6 +18,7 @@ module.exports = React.createClass({
   },
   propTypes: {
     img_src: React.PropTypes.string,
+    photo_credits: React.PropTypes.string,
     visible: React.PropTypes.bool,
     onNextClick: React.PropTypes.func,
     onPrevClick: React.PropTypes.func,
@@ -61,7 +62,6 @@ module.exports = React.createClass({
     }
   },
   render: function() {
-    console.log(<ArrowLeft/>);
     return (
       <div data-true-img-height={this.state.true_img_height} data-visible={this.props.visible.toString()} className={'image-viewer ' + (this.props.className || "")} >
         <div className='image-viewer-overlay'></div>
@@ -77,10 +77,8 @@ module.exports = React.createClass({
               ref='img'
               onLoad={this.__handleImageLoad}
               src={this.props.img_src}
-              style={{
-                marginTop: ((this.state.true_img_height / 2) * -1) + 'px'
-              }}
               className='image'/>
+            <div className='photo-credits'>{this.props.photo_credits}</div>
           </div>
           <ArrowRight
             onTouchTap={this.props.onNextClick}

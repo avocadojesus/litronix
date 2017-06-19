@@ -4,6 +4,7 @@ import styles from './home.less'
 import $ from 'jquery'
 import AudioPlayer from '../../components/audio-player'
 import Header from '../../components/header'
+import RightSidebar from '../../components/right-sidebar'
 
 export default class HomeView extends React.Component {
   constructor(props) {
@@ -21,6 +22,7 @@ export default class HomeView extends React.Component {
   render() {
     return (
       <div className='Home-View view'>
+        <RightSidebar />
         <div className='main-container'>
           <Header activeLink="home" visible={true} />
           <div className='backdrop-container'>
@@ -41,7 +43,7 @@ export default class HomeView extends React.Component {
           </div>
         </div>
         <div className='audio-player-outer-container'>
-          <AudioPlayer src="/audio/hole-in-the-wall.mp3" />
+          <AudioPlayer src="/audio/hole-in-the-wall2.mp3" />
         </div>
       </div>
     )

@@ -14,11 +14,12 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       curr_image_src: null,
+      curr_photo_credits: null,
       images: [
-        {src: "/img/pump-back-cover.png", label: "Art Design by Chris Friend"},
-        {src: "/img/pump-the-gas-front-cover-large.png", label: "Original Photo by Dan Busta\nArt Design and Photo Manipulation by Chris Friend"},
-        {src: "/img/maggot-cover.png", label: "Art Hand Drawn by Chris Friend"},
-        {src: "/img/new-age-cover.png", label: "Art Design by Litronix and Avi Buffalo"}
+        {src: "/img/pump-back-cover.png", credits: "Art Design by Chris Friend"},
+        {src: "/img/pump-the-gas-front-cover-large.png", credits: "Original Photo by Dan Busta\nArt Design and Photo Manipulation by Chris Friend"},
+        {src: "/img/maggot-cover.png", credits: "Art Hand Drawn by Chris Friend"},
+        {src: "/img/new-age-cover.png", credits: "Art Design by Litronix and Avi Buffalo"}
       ]
     };
   },
@@ -36,17 +37,20 @@ module.exports = React.createClass({
 
   },
   __imagesArray: function() {
-    var arr = []
-    for (var i in this.state.images) {
-      arr = arr.concat(this.state.images[i])
+    return this.state.images
+  },
+  __getImageBySrc: function(src) {
+    for(var i in this.state.images) {
+      var img = this.state.images[i]
+      if (img.src === src) return img
     }
-    return arr;
+    return null
   },
   __handleImageClick: function(e) {
     var src = $(e.target).closest('.native-image').attr('data-src')
-    console.log(src);
     this.setState({
-      curr_image_src: src
+      curr_image_src: src,
+      curr_photo_credits: this.__getImageBySrc(src).credits
     })
   },
   __getPrevImage: function(src) {
@@ -70,18 +74,23 @@ module.exports = React.createClass({
     }
   },
   __handleNextImageClick: function() {
+    var next_img = this.__getNextImage(this.state.curr_image_src)
     this.setState({
-      curr_image_src: this.__getNextImage(this.state.curr_image_src).src
+      curr_image_src: next_img.src,
+      curr_photo_credits: next_img.credits,
     })
   },
   __handlePrevImageClick: function() {
+    var prev_img = this.__getPrevImage(this.state.curr_image_src)
     this.setState({
-      curr_image_src: this.__getPrevImage(this.state.curr_image_src).src
+      curr_image_src: prev_img.src,
+      curr_photo_credits: prev_img.credits,
     })
   },
   __handleImageViewerClose: function() {
     this.setState({
-      curr_image_src: null
+      curr_image_src: null,
+      curr_photo_credits: null
     })
   },
   render: function() {
@@ -90,6 +99,7 @@ module.exports = React.createClass({
       <div className='Photos-View'>
         <RightSidebar />
         <ImageViewer
+          photo_credits={this.state.curr_photo_credits}
           img_src={this.state.curr_image_src}
           onNextClick={this.__handleNextImageClick}
           onPrevClick={this.__handlePrevImageClick}

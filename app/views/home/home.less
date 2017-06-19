@@ -10,7 +10,7 @@
       background: #dde0e9;
       .links {
         a {
-          color: #747a80;
+          color: #a83649;
         }
         a[data-active="true"] {
           color: #504f4f;
@@ -20,9 +20,9 @@
   }
   .main-container {
     width: 100%;
-    height: ~"calc(100% - 0px)";
+    height: ~"calc(100% - 4px)";
     position: relative;
-    overflow-y:auto;
+    overflow-y:hidden;
     overflow-x:hidden;
     .logo-container {
       width: 100%;
@@ -80,9 +80,9 @@
         .text-container {
           display: inline-block;
           vertical-align: top;
-          background: white;
-          padding: 10px;
-          margin-top: 52px;
+          background: #ffffff;
+          padding: 50px 35px;
+          margin-top: 10px;
           -webkit-box-shadow: 10px 14px 32px -14px rgba(0, 0, 0, 0.48);
           -moz-box-shadow: 10px 14px 32px -14px rgba(0, 0, 0, 0.48);
           box-shadow: 10px 14px 32px -14px rgba(0, 0, 0, 0.48);
@@ -90,6 +90,7 @@
           .album-title {
             font-size: 20px;
             margin-bottom: 10px;
+            font-family: conthrax;
           }
           .link-container {
             display: inline-block;
@@ -170,7 +171,7 @@
         }
       }
       .backdrop-container {
-        height: ~"calc(100% - 110px)";
+        height: ~"calc(100% - 77px)";
       }
     }
   }
@@ -183,7 +184,25 @@
         height: 100px;
       }
       .backdrop-container {
-        height: ~"calc(100% - 100px)";
+        height: ~"calc(100% - 77px)";
+        .pump-the-gas-banner {
+          text-align: center;
+          .album-container {
+            padding-right: 0px;
+            display: block;
+            text-align: center;
+            width: 100%;
+            .album-image {
+              width: 200px;
+            }
+          }
+          .text-container {
+            display: block;
+            .album-title {
+              font-size: 17px;
+            }
+          }
+        }
       }
     }
   }

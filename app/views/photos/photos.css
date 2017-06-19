@@ -166,7 +166,8 @@
 
 .Photos-View .image-container {
   /*text-align: center;*/
-  padding: 120px 25px;
+  padding: 80px 25px;
+  height: calc(100% - 160px);
 }
 
 .Photos-View .room-image {

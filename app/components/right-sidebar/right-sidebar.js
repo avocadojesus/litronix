@@ -72,44 +72,33 @@ module.exports = React.createClass({
                 <div className='text'>Home</div>
               </div>
             </a>
-            <a href='/tour'
+            <a href='/photos'
               data-theme='2'
               data-active={this.props.activeLink === 'tour'}
               onClick={this.__handleLinkClick}>
-              <div className='right-sidebar-icon animated' data-link='tour'>
-                <div className='text'>Tour</div>
+              <div className='right-sidebar-icon animated' data-link='photos'>
+                <div className='text'>Photos</div>
               </div>
             </a>
-            <a href='/gear'
+            <a href='/videos'
               data-theme='1'
-              data-active={this.props.activeLink === 'gear'}
-              onClick={this.__handleLinkClick}>
-              <div className='right-sidebar-icon animated' data-link='gear'>
-                <div className='text'>Gear</div>
-              </div>
-            </a>
-            <a href='/albums'
-              data-theme='3'
-              data-active={this.props.activeLink === 'albums'}
-              onClick={this.__handleLinkClick}>
-              <div className='right-sidebar-icon animated' data-link='albums'>
-                <div className='text'>Albums</div>
-              </div>
-            </a>
-            <a href='videos'
-              data-theme='3'
-              data-active={this.props.activeLink === 'videos'}
-              onClick={this.__handleLinkClick}>
+              data-active={this.props.activeLink === 'gear'}>
               <div className='right-sidebar-icon animated' data-link='videos'>
                 <div className='text'>Videos</div>
               </div>
             </a>
-            <a href='/contact'
-              data-theme='1'
-              data-active={this.props.activeLink === 'contact'}
-              onClick={this.__handleLinkClick}>
-              <div className='right-sidebar-icon animated' data-link='contact'>
-                <div className='text'>Contact</div>
+            <a href='/bio'
+              data-theme='3'
+              data-active={this.props.activeLink === 'albums'}>
+              <div className='right-sidebar-icon animated' data-link='bio'>
+                <div className='text'>Bio</div>
+              </div>
+            </a>
+            <a href='mailto:litronixmanagement@gmail.com'
+              data-theme='3'
+              data-active={false}>
+              <div className='right-sidebar-icon animated' data-link='videos'>
+                <div className='text'>contact</div>
               </div>
             </a>
           </div>
