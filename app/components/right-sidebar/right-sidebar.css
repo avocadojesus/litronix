@@ -6,7 +6,6 @@
   height: 100%;
   z-index: 11;
   display: none;
-  font-family: conthrax;
 }
 
 .right-sidebar .inner-container {
@@ -18,7 +17,6 @@
   -webkit-box-shadow: -11px 10px 40px 0px rgba(0,0,0,0.20);
   -moz-box-shadow: -11px 10px 40px 0px rgba(0,0,0,0.20);
   box-shadow: -11px 10px 40px 0px rgba(0,0,0,0.20);
-  background: #1d1d1d;
 }
 
 .right-sidebar[data-show='true'] {

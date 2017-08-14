@@ -1,0 +1,31 @@
+.blogger-post {
+
+}
+
+.blogger-post .body {
+  padding: 20px;
+  font-size: 30px;
+}
+
+.blogger-post .likes-container {
+  display: none;
+}
+
+.blogger-post .blogger-title {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.blogger-post .blogger-content {
+  float: left;
+  width: 100%;
+  font-size: 18px;
+  overflow-x: hidden;
+}
+
+.blogger-post .read-more-link {
+  font-size: 18px;
+  overflow-x:hidden;
+  text-overflow:ellipsis;
+  width: 100%;
+}

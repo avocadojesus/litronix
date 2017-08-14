@@ -1,7 +1,7 @@
 var React = require('react');
 import './right-sidebar-activator.css';
 var RightSidebarActions = require('../../actions/right-sidebar-actions')
-import AppsIcon from 'material-ui/svg-icons/navigation/apps'
+var AppsIcon = require('material-ui/lib/svg-icons/navigation/apps')
 
 module.exports = React.createClass({
   displayName: 'RightSidebarActivator',

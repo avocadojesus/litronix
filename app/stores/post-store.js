@@ -1,5 +1,5 @@
 var AppDispatcher = require('../dispatchers/app-dispatcher');
-var objectAssign = require('object-assign');
+var objectAssign = require("Object-assign");
 var EventEmitter = require('events').EventEmitter;
 var _ = require('lodash')
 var CHANGE_EVENT = 'change';

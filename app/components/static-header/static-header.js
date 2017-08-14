@@ -71,11 +71,23 @@ module.exports = React.createClass({
             onClick={this.__handleLinkClick}>
             HOME
           </a>
-          <a href='/photos'
+          <a href='/tour'
             data-theme='2'
-            data-active={this.props.activeLink === 'photos'}
+            data-active={this.props.activeLink === 'tour'}
             onClick={this.__handleLinkClick}>
-            PHOTOS
+            VIRTUAL TOUR
+          </a>
+          <a href='/gear'
+            data-theme='3'
+            data-active={this.props.activeLink === 'gear'}
+            onClick={this.__handleLinkClick}>
+            GEAR
+          </a>
+          <a href='/albums'
+            data-theme='1'
+            data-active={this.props.activeLink === 'albums'}
+            onClick={this.__handleLinkClick}>
+            ALBUMS
           </a>
           <a href='/videos'
             data-theme='1'
@@ -83,15 +95,10 @@ module.exports = React.createClass({
             onClick={this.__handleLinkClick}>
             VIDEOS
           </a>
-          <a href='/bio'
+          <a href='/contact'
             data-theme='1'
-            data-active={this.props.activeLink === 'bio'}
+            data-active={this.props.activeLink === 'contact'}
             onClick={this.__handleLinkClick}>
-            BIO
-          </a>
-          <a href='mailto:litronixmanagement@gmail.com'
-            data-theme='1'
-            data-active={this.props.activeLink === 'contact'}>
             CONTACT
           </a>
           <RightSidebarActivator color={this.props.fontColor} />

@@ -1,0 +1,52 @@
+.instagram-post {
+
+}
+
+.instagram-post .body {
+  /*max-height: 500px;
+  overflow: hidden;*/
+  text-align: center;
+}
+
+.instagram-post .instagram-img-container {
+  background: #ffffff;
+  width: 100%;
+  height: 100%;
+  display: grid;
+}
+
+.instagram-post .instagram-img {
+  background-size: cover;
+  background-position: center;
+  max-width: 900px;
+  display: inline-block;
+  position: relative;
+  height: 0;
+  width: 100%;
+  padding-bottom: 100%;
+}
+
+@media(max-width:1200px) {
+  /*.instagram-post .instagram-img-container {
+    height: 450px;
+  }*/
+  .instagram-post .instagram-img {
+    max-width: 800px;
+  }
+}
+
+@media(max-width:100px) {
+
+}
+
+@media(max-width:800px) {
+
+}
+
+@media(max-width:600px) {
+
+}
+
+@media(max-width:420px) {
+
+}

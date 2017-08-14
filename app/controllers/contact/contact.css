@@ -1,0 +1,135 @@
+.Contact-Controller {
+  font-weight: 100;
+}
+
+.Contact-Controller .header .static-header {
+  background: #dedede;
+}
+
+.Contact-Controller .main-container {
+  position: relative;
+  margin-top: 69px;
+  padding: 0 0;
+  background: white;
+}
+
+.Contact-Controller .page-title {
+  font-size: 50px;
+  color: #4a4a4a;
+  position: relative;
+  /* text-align: center; */
+  padding: 60px 30px 0 30px;
+  background: #efefef;
+}
+
+.Contact-Controller input,
+.Contact-Controller textarea {
+  padding: 5px 10px;
+  border: solid thin #d0d0d0;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  font-size: 16px;
+  outline: none;
+  background: #f9f9f9;
+  font-weight: 100;
+  color: #969696;
+}
+
+.Contact-Controller .form-container {
+  padding: 10px 30px 50px 30px;
+  /*text-align: center;*/
+}
+
+.Contact-Controller .form-inner-container {
+  display: inline-block;
+  width: 500px;
+}
+
+.Contact-Controller .form-inner-container .input-label {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  color: #505050;
+}
+
+.Contact-Controller .form-inner-container .input-container {
+  margin-bottom: 15px;
+}
+
+.Contact-Controller .form-inner-container .email-input {
+  width: calc(100% - 24px);
+}
+
+.Contact-Controller .form-inner-container .first-name-input {
+  width: calc(50% - 22px);
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.Contact-Controller .form-inner-container .last-name-input {
+  width: calc(50% - 32px);
+  display: inline-block;
+}
+
+.Contact-Controller .form-inner-container .message-input {
+  width: calc(100% - 22px);
+  height: 200px;
+}
+
+.Contact-Controller .form-inner-container .submit-btn {
+  padding: 10px 30px;
+  font-size: 16px;
+  font-weight: 100;
+  border-radius: 5px;
+  background: #eaeaea;
+  color: #444444;
+  border: none;
+  border: solid thin #cccccc;
+  cursor:pointer;
+}
+
+.Contact-Controller .form-inner-container .submit-btn:hover {
+  background: #e2e2e2;
+}
+
+.Contact-Controller .page-subtitle {
+  background: #efefef;
+  padding: 0 30px 20px 30px;
+  font-size: 18px;
+  color: #4a4a4a;
+  font-weight: 100;
+}
+
+.Contact-Controller .sectional-label {
+  background: #e6e6e6;
+  color: #4a4a4a;
+  padding: 20px 30px;
+  font-size: 25px;
+  font-weight: 100;
+}
+
+.Contact-Controller .sectional-description {
+  padding: 30px 30px 10px 30px;
+  color: #464646;
+  font-size: 18px;
+}
+
+.Contact-Controller .phone-number-container,
+.Contact-Controller .email-list-container {
+  padding: 0px 30px 30px 30px;
+  color: #4A4A4A;
+}
+
+.Contact-Controller .phone-number-container .label,
+.Contact-Controller .email-list-container .label {
+  display: inline-block;
+  margin-right: 20px;
+  padding: 3px 10px;
+  border: solid thin gray;
+  border-radius: 2px;
+}
+
+.Contact-Controller .phone-number-container .phone-number,
+.Contact-Controller .email-list-container .email {
+  display: inline-block;
+}

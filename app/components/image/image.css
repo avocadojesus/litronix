@@ -5,18 +5,19 @@
   display: inline-block;
   margin: 10px;
   background-size: cover;
+  cursor: pointer;
 }
 
 .native-image[data-is-loading="true"] {
   background: #171717;
 }
 
-.native-image:hover {
+/*.native-image:hover {
   border: solid thin white;
   width: calc(20% - 22px);
   padding-bottom: calc(20% - 22px);
   cursor: pointer;
-}
+}*/
 
 .native-image .img {
   width: 100%;
@@ -24,4 +25,5 @@
   max-width: 100%;
   padding-bottom: 100%;
   background-size: cover;
+  will-change: transform;
 }
