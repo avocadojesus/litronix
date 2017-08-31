@@ -36,7 +36,7 @@ class App extends React.Component {
         artist_name: 'Litronix',
         title: 'Hole in the Wall',
         album_name: 'Pump the Gas',
-        stream_url: '/audio/hole-in-the-wall.mp3',
+        stream_url: '/audio/hole-in-the-wall.m4a',
         artwork_url: '/img/pump-the-gas-front-cover-small.png',
       })
     }
