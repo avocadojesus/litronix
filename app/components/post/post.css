@@ -149,5 +149,10 @@
 }
 
 @media(max-width: 600px) {
-
+  .post-component {
+    width: 100%;
+    height: 0;
+    margin-bottom: 10px;
+    padding-bottom: 100%;
+  }
 }

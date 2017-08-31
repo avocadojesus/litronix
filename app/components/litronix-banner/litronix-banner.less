@@ -3,6 +3,7 @@
   height: 550px;
   background-size: cover;
   position: relative;
+  z-index: 2;
   background: #ff006a;
   background: #000000;
   background: -moz-linear-gradient(top, #000000 0%, #1b0a1b 100%);
@@ -64,22 +65,19 @@
   }
 }
 
-@media(max-width:1000px) {
-  .litronix-banner > .logo-container .logo-img {
-    width: 100%;
+@media(max-width:713px) {
+  .litronix-banner > .logo-container {
+    width: 80%;
+    margin-top: 70px;
   }
-  .litronix-banner .description {
-    left: 45%;
-    margin-left: -345px;
+  .litronix-banner .logo-container .description {
+    // left: 45%;
+    // margin-left: -345px;
     font-size: 18px;
+    margin: 0;
   }
 }
 
 @media(max-width:800px) {
-  .litronix-banner > .logo-container .logo-img {
-    width: 100%;
-  }
-  .litronix-banner .description {
-    font-size: 18px;
-  }
+
 }

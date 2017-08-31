@@ -65,10 +65,12 @@ module.exports = React.createClass({
         data-theme={this.props.theme}
         data-scrolled-down={this.props.scrolledDown}
         data-is-scrolled-past={this.state.is_scrolled_past}>
-        <div className='litronix-header-container'>
-          <div className='litronix-header'></div>
+        <div className='header-outer-container'>
+          <div className='litronix-header-container'>
+            <div className='litronix-header'></div>
+          </div>
+          <StaticHeader className="outer-container" activeLink={this.props.activeLink} allCaps={false} fontColor='white'/>
         </div>
-        <StaticHeader className="outer-container" activeLink={this.props.activeLink} allCaps={false} fontColor='white'/>
         <LitronixBanner />
       </div>
     )

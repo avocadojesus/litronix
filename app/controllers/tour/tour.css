@@ -11,12 +11,12 @@
 .Tour-Controller .tour-banner {
   width: 100%;
   margin-bottom: 20px;
-  max-height: 500px;
+  max-height: 350px;
   background-size: cover;
-  background-image: url(/img/tour.png);
-  height: 500px;
+  background-image: url(/img/photos/offbeat.jpg);
+  height: 350px;
   clear: both;
-  background-position:top center;
+  background-position: 0 23%;
 }
 
 .Tour-Controller .empty-message {

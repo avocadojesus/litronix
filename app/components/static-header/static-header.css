@@ -52,6 +52,7 @@
 }
 
 @media(max-width:1050px) {
+
   .static-header .title {
     /*text-align: center;
     display: block;

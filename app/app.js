@@ -28,17 +28,17 @@ class App extends React.Component {
     super(props)
   }
   componentDidMount() {
-    AppActions.audioPlay({
-      id: 1,
-      artist_name: 'Litronix',
-      title: 'Hole in the Wall',
-      album_name: 'Pump the Gas',
-      stream_url: '/audio/hole-in-the-wall.mp3',
-      artwork_url: '/img/pump-the-gas-front-cover-small.png',
-    })
-
     if ($(window).width() < 800) {
       AppActions.audioMinimize()
+    } else {
+      AppActions.audioPlay({
+        id: 1,
+        artist_name: 'Litronix',
+        title: 'Hole in the Wall',
+        album_name: 'Pump the Gas',
+        stream_url: '/audio/hole-in-the-wall.mp3',
+        artwork_url: '/img/pump-the-gas-front-cover-small.png',
+      })
     }
   }
   render() {
