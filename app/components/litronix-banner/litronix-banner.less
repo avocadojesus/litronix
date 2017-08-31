@@ -1,0 +1,85 @@
+.litronix-banner {
+  width: 100%;
+  height: 550px;
+  background-size: cover;
+  position: relative;
+  background: #ff006a;
+  background: #000000;
+  background: -moz-linear-gradient(top, #000000 0%, #1b0a1b 100%);
+  background: -webkit-linear-gradient(top, #000000 0%,#1b0a1b 100%);
+  background: linear-gradient(to bottom, #000000 0%,#1b0a1b 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#1b0a1b',GradientType=0 );
+  text-align: center;
+  -webkit-box-shadow: 10px 30px 67px -14px rgba(0,0,0,0.2);
+  -moz-box-shadow: 10px 30px 67px -14px rgba(0,0,0,0.2);
+  box-shadow: 10px 30px 67px -14px rgba(0,0,0,0.2);
+  > .background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(/img/litronix-pump-gas-background-img.png);
+    background-size: cover;
+  }
+  > .background-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .logo-container {
+    text-align: center;
+    margin-top: 100px;
+    position: relative;
+    display: inline-block;
+    background: #fa3234;
+    padding: 20px;
+    -webkit-box-shadow: 10px 10px 67px -14px rgba(0,0,0,0.4);
+    -moz-box-shadow: 10px 10px 67px -14px rgba(0,0,0,0.4);
+    box-shadow: 10px 10px 67px -14px rgba(0,0,0,0.4);
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    .logo-img {
+      width: 200px;
+    }
+    .description {
+      position: relative;
+      display: inline-block;
+      margin-left: 40px;
+      font-size: 27px;
+      font-weight: 100;
+      // font-family: monospace;
+      color: #ffffff;
+      padding: 20px;
+      vertical-align: top;
+      margin-top: 50px;
+      .text {
+        font-weight: 100;
+        margin-bottom: 20px;
+      }
+      .ui.button {
+        background: #01b0d5;
+        color:white;
+      }
+    }
+  }
+}
+
+@media(max-width:1000px) {
+  .litronix-banner > .logo-container .logo-img {
+    width: 100%;
+  }
+  .litronix-banner .description {
+    left: 45%;
+    margin-left: -345px;
+    font-size: 18px;
+  }
+}
+
+@media(max-width:800px) {
+  .litronix-banner > .logo-container .logo-img {
+    width: 100%;
+  }
+  .litronix-banner .description {
+    font-size: 18px;
+  }
+}

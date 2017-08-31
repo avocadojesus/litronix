@@ -4,25 +4,64 @@ var Router = require('react-router');
 // var Home = require('./controllers/home');
 var Router = require('react-router').Router;
 var Route = require('react-router').Route;
+import $ from 'jquery';
 var browserHistory = require('react-router').browserHistory;
 var injectTapEventPlugin = require('react-tap-event-plugin');
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppActions from './actions/app-actions';
 import Home from './controllers/home';
-import Bio from './controllers/bio';
-import Photos from './controllers/photos';
+import Gear from './controllers/gear';
+import Albums from './controllers/albums';
+import Album from './controllers/album';
 import Videos from './controllers/videos';
+import Photos from './controllers/photos';
+import Contact from './controllers/contact';
+import Bio from './controllers/bio';
+import Tour from './controllers/tour';
+import AudioPlayer from './components/audio-player';
+import VideoPlayer from './components/video-player';
+
 require('./app.less')
 injectTapEventPlugin();
 
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount() {
+    AppActions.audioPlay({
+      id: 1,
+      artist_name: 'Litronix',
+      title: 'Hole in the Wall',
+      album_name: 'Pump the Gas',
+      stream_url: '/audio/hole-in-the-wall.mp3',
+      artwork_url: '/img/pump-the-gas-front-cover-small.png',
+    })
+
+    if ($(window).width() < 800) {
+      AppActions.audioMinimize()
+    }
+  }
+  render() {
+    return (
+      <div className='app-outer-container'>
+        <AudioPlayer/>
+        <VideoPlayer />
+        <Router history={browserHistory}>
+          <Route component={Home} name='home' path='/' ignoreScrollBehavior/>
+          <Route component={Gear} name='gear' path='/gear' ignoreScrollBehavior/>
+          <Route component={Albums} name='albums' path='/albums' ignoreScrollBehavior/>
+          <Route component={Album} name='album' path='/albums/*' ignoreScrollBehavior/>
+          <Route component={Videos} name='videos' path='/videos' ignoreScrollBehavior/>
+          <Route component={Tour} name='tour' path='/tour' ignoreScrollBehavior/>
+          <Route component={Photos} name='photos' path='/photos' ignoreScrollBehavior/>
+          <Route component={Bio} name='bio' path='/bio' ignoreScrollBehavior/>
+          <Route component={Contact} name='contact' path='/contact' ignoreScrollBehavior/>
+        </Router>
+      </div>
+    )
+  }
+}
+
 window.onload = function() {
-  ReactDOM.render((
-    <MuiThemeProvider>
-      <Router history={browserHistory}>
-        <Route component={Home} name='home' path='/' ignoreScrollBehavior/>
-        <Route component={Photos} name='photos' path='/photos' ignoreScrollBehavior/>
-        <Route component={Bio} name='bio' path='/bio' ignoreScrollBehavior/>
-        <Route component={Videos} name='videos' path='/videos' ignoreScrollBehavior/>
-      </Router>
-    </MuiThemeProvider>
-  ), document.querySelector('#app-target'));
+  ReactDOM.render(<App />, document.querySelector('#app-target'));
 }

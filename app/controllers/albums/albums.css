@@ -1,0 +1,60 @@
+.Albums-Controller .albums-main-container {
+  background: black;
+}
+
+.Albums-Controller .select-filter-by-container {
+  clear: both;
+  margin-bottom: 60px;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  background: #8a88f7;
+  background: -moz-linear-gradient(top, #8a88f7 0%, #70abd8 100%);
+  background: -webkit-linear-gradient(top, #8a88f7 0%,#70abd8 100%);
+  background: linear-gradient(to bottom, #8a88f7 0%,#70abd8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a88f7', endColorstr='#70abd8',GradientType=0 )
+}
+
+.Albums-Controller .filter-select {
+  position:relative;
+  top:-3px;
+}
+
+.Albums-Controller .filter-by-label {
+  display: inline-block;
+}
+
+.Albums-Controller .static-header {
+  /*padding: 30px;
+  width: calc(100% - 60px);*/
+}
+
+/*.Albums-Controller .item-viewer {
+  padding: 30px;
+  width: calc(100% - 60px);
+  display: inline-block;
+}*/
+
+@media(min-width:900px) {
+  .Albums-Controller .item-viewer .album {
+    /*margin: 10px 20px 10px 0;*/
+  }
+
+  .Albums-Controller .item-viewer {
+    padding: 30px;
+    width: calc(100% - 60px);
+    display: inline-block;
+    /*margin-left: 100px;*/
+  }
+}
+
+.Albums-Controller .matt-costa-media-banner {
+  width: 100%;
+  margin-bottom: 20px;
+  max-height: 200px;
+  background-size: cover;
+  background-image: url(/img/matt-costa-media-banner.jpeg);
+  height: 200px;
+  clear: both;
+  background-position:top center;
+}

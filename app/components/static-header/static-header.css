@@ -2,7 +2,6 @@
   float: left;
   width: 100%;
   padding: 0px;
-  height: 77px;
 }
 
 .static-header .title {
@@ -47,12 +46,9 @@
 }
 
 .static-header .title .logo-img {
-  width:112px;
+  width:200px;
   height: 69px;
-  background: url(/img/litronix-logo-trimmed.png);
-  background-size: cover;
-  position: absolute;
-  top: 20px;
+  background: url(/img/space-and-time-logo-full-small-white.png);
 }
 
 @media(max-width:1050px) {

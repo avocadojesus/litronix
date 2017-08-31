@@ -47,8 +47,8 @@ module.exports = React.createClass({
   },
   render: function() {
     var self = this
-    var title = this.state.username || "Space + Time"
-    if (!this.props.allCaps && !this.state.username) title = "Space + Time"
+    var title = this.state.username || "Litronix"
+    if (!this.props.allCaps && !this.state.username) title = "Litronix"
 
     return (
       <div className={'static-header ' + (this.props.className || "")} data-visible={this.props.visible}>
@@ -77,6 +77,12 @@ module.exports = React.createClass({
             onClick={this.__handleLinkClick}>
             PHOTOS
           </a>
+          <a href='/tour'
+            data-theme='1'
+            data-active={this.props.activeLink === 'tour'}
+            onClick={this.__handleLinkClick}>
+            SHOWS
+          </a>
           <a href='/videos'
             data-theme='1'
             data-active={this.props.activeLink === 'videos'}
@@ -94,7 +100,7 @@ module.exports = React.createClass({
             data-active={this.props.activeLink === 'contact'}>
             CONTACT
           </a>
-          <RightSidebarActivator color={this.props.fontColor} />
+          <RightSidebarActivator color={"white"} />
         </div>
       </div>
     )

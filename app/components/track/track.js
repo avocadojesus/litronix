@@ -3,7 +3,7 @@ var ReactDOM = require('react-dom');
 var sprintf = require('sprintf-js').sprintf;
 var AppDispatcher = require('../../dispatchers/app-dispatcher')
 var AppActions = require('../../actions/app-actions')
-import PlayIcon from 'material-ui/svg-icons/av/play-arrow'
+var PlayIcon = require('material-ui/lib/svg-icons/av/play-arrow')
 var $ = require('jquery');
 import './track.css';
 

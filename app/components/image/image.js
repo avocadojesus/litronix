@@ -8,6 +8,7 @@ module.exports = React.createClass({
   displayName: 'Image',
   propTypes: {
     src: React.PropTypes.string,
+    full_src: React.PropTypes.string,
     onTouchTap: React.PropTypes.func
   },
   getDefaultProps: function() {
@@ -32,6 +33,7 @@ module.exports = React.createClass({
         .attr("src", this.props.src)
         .on('load', function() {
           self.setState({img_loaded: true})
+          console.log("loaded");
         });
   },
   render: function() {
@@ -40,7 +42,7 @@ module.exports = React.createClass({
         className='native-image'
         data-is-loading={!this.state.img_loaded}
         onTouchTap={this.props.onTouchTap}
-        data-src={this.props.src}>
+        data-src={this.props.full_src || this.props.src}>
         {
           !this.state.img_loaded &&
           <Loader />

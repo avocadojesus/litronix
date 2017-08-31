@@ -1,0 +1,10 @@
+.soundcloud-post {
+  background: #efefef;
+}
+
+.soundcloud-post .body {
+  clear: both;
+  padding-top: 20px;
+  background: #efefef;
+  min-height: auto;
+}

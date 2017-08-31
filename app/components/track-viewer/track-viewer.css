@@ -1,0 +1,91 @@
+.track-viewer {
+  padding-left: 20px;
+  padding-right: 20px;
+  width: calc(100% - 40px);
+  position: relative;
+}
+
+.track-viewer .loader {
+  width:200px;
+  height: 200px;
+  padding: 0;
+}
+
+.track-viewer[data-loading="true"] {
+  height: 250px;
+}
+
+.track-viewer .track-viewer-overlay {
+  width:100%;
+  min-height:100%;
+  background:rgba(70, 32, 11, 0.3);
+  position:absolute;
+  top:0;
+  left: 0;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+  z-index:4;
+  display:none;
+}
+
+.track-viewer[data-scrolled-down='true'] .track-viewer-overlay {
+  opacity:0;
+  z-index:0;
+}
+
+.track-viewer .head {
+  float:left;
+  width:100%;
+  height:100px;
+  margin-bottom:40px;
+}
+
+.track-viewer .left-container {
+  float:left;
+  width:100px;
+  height:100%;
+}
+
+.track-viewer .left-container .track-album-art-container {
+  background-size: contain !important;
+  height:100%;
+}
+
+.track-viewer .right-container {
+  float:left;
+  width:calc(100% - 120px);
+  height:100%;
+  font-size:36px;
+  margin-left:20px;
+}
+
+.track-viewer .album-title {
+  margin-top:22px;
+}
+
+/* DARK THEME */
+.track-viewer[data-theme="dark"] {
+  background: #000000;
+}
+
+.track-viewer[data-theme="dark"] .album-title {
+  color: #ababab;
+}
+
+.track-viewer[data-theme="dark"] .track {
+  background: #252525;
+}
+
+.track-viewer[data-theme="dark"] .track:nth-child(even) {
+  background: #131313;
+}
+
+.track-viewer[data-theme="dark"] .track:hover {
+  background: #2d2c2d;
+  cursor: pointer;
+}
+
+.track-viewer[data-theme="dark"] .track .track-title {
+  color: #696868;
+}

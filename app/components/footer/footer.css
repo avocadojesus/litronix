@@ -1,6 +1,6 @@
 .footer {
   float: left;
-  width: calc(100% - 20px);
+  width: calc(100%);
   padding: 100px 10px 200px 10px;
   text-align: center;
   background: #f7f7f7;
@@ -19,7 +19,8 @@
   color:#a8a8a8;
 }
 
-.footer .links a {
+.footer .links a,
+.footer .social a {
   text-decoration:none;
   color:#4c4c54;
   margin:0 5px;
@@ -30,7 +31,9 @@
   margin-top:15px;
 }
 
-.footer .social img {
+.footer .social i {
   margin:0 5px;
   cursor: pointer;
+  width: 30px;
+  height: 30px;
 }

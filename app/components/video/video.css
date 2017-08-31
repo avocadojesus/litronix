@@ -1,0 +1,66 @@
+.video {
+  display: inline-block;
+  width: calc(33% - 20px);
+  margin-right: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.video:hover .overlay {
+  background: rgba(0,0,0,.3);
+}
+
+.video .poster-image {
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%;
+  background-size: cover;
+}
+
+.video .overlay {
+  position: absolute;
+  background: rgba(0,0,0,.5);
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%;
+  top: 0;
+  text-align: center;
+}
+
+.video .play-icon {
+  margin-top: 25%;
+}
+
+.video .txt-container {
+  background:#E6E4E4;
+  padding: 5px 10px 10px 10px;
+  display: none;
+  position: absolute;
+  bottom: 0;
+  width: calc(100%);
+}
+
+.video:hover .txt-container {
+  display: block;
+}
+
+.video .txt-container div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.video .txt-container .video-title {
+  font-size: 18px;
+}
+
+.video .txt-container .video-artist-name {
+  font-size: 16px;
+  opacity:.8;
+}
+
+@media(max-width: 800px) {
+  .video {
+    width: 80%;
+  }
+}

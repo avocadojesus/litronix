@@ -32,8 +32,8 @@ gulp.task('watch', function() {
       debug: true,
       cache: {}, packageCache: {}, fullPaths: true
     })
-    .transform('babelify', {presets: ['es2015', 'stage-1', 'react']})
     .transform('browserify-css')
+    .transform('babelify', {presets: ['es2015', 'react']})
     .transform('lessify')
   );
 

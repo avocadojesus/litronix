@@ -4,12 +4,12 @@ import './right-sidebar.css';
 var browserHistory = require('react-router').browserHistory
 var RightSidebarActions = require('../../actions/right-sidebar-actions')
 var AppDispatcher = require('../../dispatchers/app-dispatcher')
-import ContactIcon from 'material-ui/svg-icons/communication/message'
-import TourIcon from 'material-ui/svg-icons/maps/flight'
-import MediaIcon from 'material-ui/svg-icons/image/photo-camera'
-import HomeIcon from 'material-ui/svg-icons/action/home'
-import MerchIcon from 'material-ui/svg-icons/action/shop'
-import BioIcon from 'material-ui/svg-icons/maps/person-pin'
+var ContactIcon = require('material-ui/lib/svg-icons/communication/message')
+var TourIcon = require('material-ui/lib/svg-icons/maps/flight')
+var MediaIcon = require('material-ui/lib/svg-icons/image/photo-camera')
+var HomeIcon = require('material-ui/lib/svg-icons/action/home')
+var MerchIcon = require('material-ui/lib/svg-icons/action/shop')
+var BioIcon = require('material-ui/lib/svg-icons/maps/person-pin')
 
 module.exports = React.createClass({
   displayName: 'RightSidebar',
@@ -72,33 +72,44 @@ module.exports = React.createClass({
                 <div className='text'>Home</div>
               </div>
             </a>
-            <a href='/photos'
+            <a href='/tour'
               data-theme='2'
               data-active={this.props.activeLink === 'tour'}
               onClick={this.__handleLinkClick}>
-              <div className='right-sidebar-icon animated' data-link='photos'>
-                <div className='text'>Photos</div>
+              <div className='right-sidebar-icon animated' data-link='tour'>
+                <div className='text'>Tour</div>
               </div>
             </a>
-            <a href='/videos'
+            <a href='/gear'
               data-theme='1'
-              data-active={this.props.activeLink === 'gear'}>
+              data-active={this.props.activeLink === 'gear'}
+              onClick={this.__handleLinkClick}>
+              <div className='right-sidebar-icon animated' data-link='gear'>
+                <div className='text'>Gear</div>
+              </div>
+            </a>
+            <a href='/albums'
+              data-theme='3'
+              data-active={this.props.activeLink === 'albums'}
+              onClick={this.__handleLinkClick}>
+              <div className='right-sidebar-icon animated' data-link='albums'>
+                <div className='text'>Albums</div>
+              </div>
+            </a>
+            <a href='videos'
+              data-theme='3'
+              data-active={this.props.activeLink === 'videos'}
+              onClick={this.__handleLinkClick}>
               <div className='right-sidebar-icon animated' data-link='videos'>
                 <div className='text'>Videos</div>
               </div>
             </a>
-            <a href='/bio'
-              data-theme='3'
-              data-active={this.props.activeLink === 'albums'}>
-              <div className='right-sidebar-icon animated' data-link='bio'>
-                <div className='text'>Bio</div>
-              </div>
-            </a>
-            <a href='mailto:litronixmanagement@gmail.com'
-              data-theme='3'
-              data-active={false}>
-              <div className='right-sidebar-icon animated' data-link='videos'>
-                <div className='text'>contact</div>
+            <a href='/contact'
+              data-theme='1'
+              data-active={this.props.activeLink === 'contact'}
+              onClick={this.__handleLinkClick}>
+              <div className='right-sidebar-icon animated' data-link='contact'>
+                <div className='text'>Contact</div>
               </div>
             </a>
           </div>
