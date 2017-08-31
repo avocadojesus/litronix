@@ -1,62 +1,53 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Loader = require('../loader/loader');
-var SC = require('soundcloud');
-var $ = require('jquery')
-import './audio-player.css';
-var PlayIcon = require('material-ui/lib/svg-icons/av/play-circle-outline')
-var PauseIcon = require('material-ui/lib/svg-icons/av/pause-circle-outline')
-var SkipNext = require('material-ui/lib/svg-icons/av/skip-next')
-var SkipPrevious = require('material-ui/lib/svg-icons/av/skip-previous')
-var VolumeMute = require('material-ui/lib/svg-icons/av/volume-mute')
-var ArrowDown = require('material-ui/lib/svg-icons/hardware/keyboard-arrow-down')
-var ArrowUp = require('material-ui/lib/svg-icons/hardware/keyboard-arrow-up')
-var AppDispatcher = require('../../dispatchers/app-dispatcher')
-var app_config = require('../../config/app')
-var AppActions = require('../../actions/app-actions')
-var Promise = require('bluebird')
+import React from 'react'
+import ReactDOM from 'react-dom'
+import $ from 'jquery'
+import './audio-player.less'
+import { Icon } from 'semantic-ui-react'
+import AppDispatcher from '../../dispatchers/app-dispatcher'
+import AppActions from '../../actions/app-actions'
+import Promise from 'bluebird'
 
-module.exports = React.createClass({
-  displayName: 'audio-player',
-  getInitialState: function() {
-    return {
+export default class AudioPlayer extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
       visible: false,
       is_playing: false,
       is_muted: false,
-      platform: 'soundcloud',
-      soundcloud_track_id: null,
-      stream_url: null,
-      artwork_url: null,
-      artist_name: null,
-      album_name: null,
-      track_name: null,
+      curr_stream_url: null,
+      curr_artwork_url: null,
+      curr_artist_name: null,
+      curr_album_name: null,
+      curr_track_name: null,
       progress: null,
       volume: 80,
       expanded: true,
-      was_interrupted: false
+      was_interrupted: false,
+      play_queue: [],
+      prev_play_queue: [],
+      curr_track: null
     }
-  },
-  propTypes: {
-    scClientId: React.PropTypes.string
-  },
-  componentDidMount: function() {
+  }
+  componentDidMount() {
     var self = this;
     this.$audio_node = ReactDOM.findDOMNode(this.refs.audio);
-    SC.initialize({
-      client_id: app_config.soundcloud_client_id
-    });
 
     this.$audio_node.addEventListener('timeupdate', function(e) {
       var percent = (e.target.currentTime / ReactDOM.findDOMNode(self.refs.audio).duration) * 100
-      AppActions.audioProgressUpdate(self.state.soundcloud_track_id, percent)
+      AppActions.audioProgressUpdate(self.state.curr_track.id, percent)
     });
 
-    AppDispatcher.register(function(payload){
+    this.$audio_node.addEventListener('ended', (e) => {
+      AppActions.audioPlayNext()
+    });
+
+    AppDispatcher.register((payload) => {
       switch (payload.action.actionType) {
         case "AUDIO_PROGRESS_UPDATE":
-          if (payload.action.track_id === self.state.soundcloud_track_id && self.state.soundcloud_track_id) {
+          if (payload.action.track_id === this.state.curr_track.id && this.state.curr_track.id) {
             if (payload.action.update_duration) {
-              self.$audio_node.currentTime = (self.$audio_node.duration * (payload.action.progress / 100)).toFixed(2);
+              var new_time = (self.$audio_node.duration * (payload.action.progress / 100)).toFixed(2)
+              self.$audio_node.currentTime = new_time;
             } else {
               self.setState({progress: payload.action.progress})
             }
@@ -65,18 +56,50 @@ module.exports = React.createClass({
         case "AUDIO_VOLUME_UPDATE":
           self.setState({volume: payload.action.volume})
           break;
-        case "AUDIO_SET_TRACK_FROM_SOUNDCLOUD":
-          self.setState({visible: true})
-          self.__setSoundcloudTrack(payload.action.track_id);
+        case "AUDIO_RESET_QUEUE":
+          this.setState({
+            play_queue: [],
+            prev_play_queue: []
+          })
+          break;
+        case "QUEUE_TRACKS":
+          var play_queue = this.state.play_queue
+          var play_queue_length = play_queue.length
+
+          if ($.isArray(payload.action.tracks)) {
+            play_queue = play_queue.concat(payload.action.tracks)
+          } else {
+            play_queue.push(payload.action.tracks)
+          }
+
+          self.setState({
+            visible: true,
+            play_queue: play_queue
+          })
+          break;
+        case "PLAY_TRACK":
+          var track = payload.action.track
+          this.__set_curr_track(track)
+          setTimeout(() => { AppActions.audioPlay() }, 20)
           break;
         case "AUDIO_PLAY":
-          self.setState({ is_playing: true });
+          if (payload.action.track) this.__set_curr_track(payload.action.track)
+          self.setState({ is_playing: true, visible: true });
+          break;
+        case "AUDIO_PLAY_NEXT":
+          this.__play_next_track()
+          break;
+        case "AUDIO_PLAY_PREVIOUS":
+          this.__play_prev_track()
           break;
         case "AUDIO_PAUSE":
           self.setState({ is_playing: false });
           break;
         case "AUDIO_MUTE":
           self.setState({ is_muted: payload.action.mute });
+          break;
+        case "AUDIO_MINIMIZE":
+          self.setState({ expanded: false });
           break;
         case "PAUSE_ALL_MEDIA":
           if (self.state.is_playing) {
@@ -100,14 +123,51 @@ module.exports = React.createClass({
           }
           break;
       }
-    });
-  },
-  componentDidUpdate: function(prev_props, prev_state) {
+    })
+  }
+  __set_curr_track(track, dont_set_prev_track) {
+    var prev_play_queue = this.state.prev_play_queue
+    if (this.state.curr_track && !dont_set_prev_track) {
+      prev_play_queue.unshift(this.state.curr_track)
+    }
+
+    this.setState({
+      prev_play_queue: prev_play_queue,
+      curr_track: track,
+      curr_artist_name: track.artist_name,
+      curr_track_name: track.title,
+      curr_album_name: track.album_name,
+      curr_stream_url: track.stream_url,
+      curr_artwork_url: track.artwork_url,
+    })
+  }
+  __play_next_track() {
+    if (this.state.play_queue.length > 0) {
+      var new_play_queue = this.state.play_queue
+      var removed_item = new_play_queue.shift()
+      console.log(removed_item, new_play_queue);
+      this.__set_curr_track(removed_item)
+      this.setState({
+        play_queue: new_play_queue
+      })
+    }
+  }
+  __play_prev_track() {
+    if (this.state.prev_play_queue.length > 0) {
+      this.__set_curr_track(this.state.prev_play_queue[0], true)
+      var new_prev_play_queue = this.state.prev_play_queue
+      new_prev_play_queue.shift()
+      this.setState({
+        prev_play_queue: new_prev_play_queue
+      })
+    }
+  }
+  componentDidUpdate(prev_props, prev_state) {
     var self = this
 
     // if stream url is updated, force the audio to reload
-    if (prev_state.stream_url !== this.state.stream_url) {
-      document.querySelector('#audio-src').src = this.state.stream_url;
+    if (prev_state.curr_stream_url !== this.state.curr_stream_url) {
+      document.querySelector('#audio-src').src = this.state.curr_stream_url;
       this.$audio_node.load()
     }
 
@@ -137,16 +197,16 @@ module.exports = React.createClass({
     if (!this.state.is_playing) {
       this.$audio_node.pause()
     }
-  },
-  fadeOut: function() {
+  }
+  fadeOut() {
     var self = this
     return new Promise(function(accept, reject) {
       $(this.$audio_node).animate({volume: 0}, 1500, function() {
         return accept()
       })
     }.bind(this))
-  },
-  fadeIn: function() {
+  }
+  fadeIn() {
     var self = this
     return new Promise(function(accept, reject) {
       this.$audio_node.volume = 0
@@ -154,93 +214,47 @@ module.exports = React.createClass({
         return accept()
       })
     }.bind(this))
-  },
-  __setSoundcloudPlaylist: function() {
-    SC
-      .get("/playlists/" + this.props.scPlaylistId)
-      .then(function(playlist){
-        self.setState({
-          album: playlist,
-          title: playlist.title,
-          tracks: playlist.tracks,
-          description: playlist.description,
-          artwork_url: self.__getPlaylistArtworkUrlFromPlaylist(playlist),
-          artist_name: playlist.user.username,
-          curr_track_index: 0,
-          isLoading: false
-        });
-      });
-  },
-  __setSoundcloudTrack: function(track_id) {
-    var self = this
-    SC
-      .get("/tracks/" + track_id)
-      .then(function(track){
-        self.setState({
-          platform: 'soundcloud',
-          soundcloud_track_id: track_id,
-          stream_url: track.stream_url + '?client_id=' + app_config.soundcloud_client_id,
-          artwork_url: track.artwork_url,
-          artist_name: track.user.username,
-          album_name: null,
-          track_name: track.title,
-          is_playing: true
-        });
-      });
-  },
-  getDefaultProps: function() {
-    return {
-      album: [],
-      scrolledDown: false,
-      theme: "light"
-    }
-  },
-  __getPlaylistArtworkUrlFromPlaylist: function(playlist) {
-    if (typeof playlist.artwork_url === 'string')
-      return playlist.artwork_url.replace(/large\.jpg/, 't300x300.jpg')
-
-    if (typeof playlist.tracks[0].artwork_url === 'string')
-      return playlist.tracks[0].artwork_url.replace(/large\.jpg/, 't300x300.jpg')
-
-    if (typeof playlist.user.avatar_url === 'string')
-      return playlist.user.avatar_url.replace(/large\.jpg/, 't300x300.jpg')
-  },
-  __handlePlayClick: function() {
+  }
+  __handlePlayClick() {
     AppActions.audioPlay(this.state.soundcloud_track_id)
-  },
-  __handlePauseClick: function() {
+  }
+  __handlePauseClick() {
     AppActions.audioPause(this.state.soundcloud_track_id)
-  },
-  __handleSeekerClick: function(e) {
+  }
+  __handleSeekerClick(e) {
     var left = e.nativeEvent.pageX - $(e.target).offset().left;
     var percent = (left / $(e.target).closest('.progress-container').width()) * 100;
-    AppActions.audioProgressUpdate(this.state.soundcloud_track_id, percent, true)
-  },
-  __handleVolumeSliderClick: function(e) {
+    AppActions.audioProgressUpdate(this.state.curr_track.id, percent, true)
+  }
+  __handleVolumeSliderClick(e) {
     var left = e.nativeEvent.pageX - $(e.target).offset().left;
     var percent = (left / $(e.target).closest('.volume-slider').width()) * 100;
     AppActions.audioVolumeUpdate(percent)
-  },
-  __handleSkipPreviousClick: function(e) {
-    AppActions.audioProgressUpdate(this.state.soundcloud_track_id, 0, true)
-  },
-  __handleSkipNextClick: function(e) {
-    AppActions.audioProgressUpdate(this.state.soundcloud_track_id, 100, true)
-  },
-  __handleMuteClick: function(e) {
+  }
+  __handleSkipPreviousClick(e) {
+    if (this.$audio_node.currentTime < 5) {
+      AppActions.audioPlayPrevious()
+    } else {
+      AppActions.audioProgressUpdate(this.state.curr_track.id, 0, true)
+    }
+  }
+  __handleSkipNextClick(e) {
+    AppActions.audioPlayNext()
+  }
+  __handleMuteClick(e) {
     AppActions.audioMute(!this.state.is_muted)
-  },
-  __handleRetractClick: function() {
+  }
+  __handleRetractClick() {
     this.setState({
       expanded: false
     })
-  },
-  __handleExpandClick: function() {
+  }
+  __handleExpandClick() {
     this.setState({
       expanded: true
     })
-  },
-  render: function() {
+  }
+  render() {
     var self = this;
 
     var style = {
@@ -249,7 +263,7 @@ module.exports = React.createClass({
 
     return (
       <div
-        className='audio-player'
+        className='audio-player animated fadeInUp'
         data-visible={this.state.visible}
         data-is-muted={this.state.is_muted}
         data-is-playing={this.state.is_playing}
@@ -257,56 +271,56 @@ module.exports = React.createClass({
         >
         <audio ref='audio' preload="none">
           {
-            (this.state.stream_url) &&
-            <source id='audio-src' src={this.state.stream_url} type='audio/mpeg' codecs='mpeg' />
+            this.state.curr_stream_url &&
+            <source id='audio-src' src={this.state.curr_stream_url} type='audio/mpeg' codecs='mpeg' />
           }
         </audio>
         <div className='left-container'>
           <div className='album-img-container'>
-            <div className='album-img' style={{backgroundImage: 'url(' + this.state.artwork_url + ')'}}></div>
+            <div className='album-img' style={{backgroundImage: 'url(' + this.state.curr_artwork_url + ')'}}></div>
           </div>
           <div className='album-text'>
-            <div className='track-name'>{this.state.track_name || ""}</div>
-            <div className='artist-name'>{this.state.artist_name || ""}</div>
-            <div className='album-name'>{this.state.album_name || ""}</div>
+            <div className='track-name'>{this.state.curr_track_name || ""}</div>
+            <div className='artist-name'>{this.state.curr_artist_name || ""}</div>
+            <div className='album-name'>{this.state.curr_album_name || ""}</div>
           </div>
         </div>
         <div className='center-container'>
           <div className='controls'>
             <div className='upper-tier'>
-              <SkipPrevious
-                onTouchTap={this.__handleSkipPreviousClick}
+              <Icon
+                name='step backward'
+                onTouchTap={this.__handleSkipPreviousClick.bind(this)}
                 className='skip-previous-icon'
-                color={"#505050"}
                 style={{width:"36px", height:'36px'}}>
-              </SkipPrevious>
+              </Icon>
               {
                 !this.state.is_playing &&
-                <PlayIcon
-                  onTouchTap={this.__handlePlayClick}
+                <Icon
+                  name="play"
+                  onTouchTap={this.__handlePlayClick.bind(this)}
                   className='play-icon'
-                  color={"#505050"}
                   style={{width:"36px", height:'36px'}}>
-                </PlayIcon>
+                </Icon>
               }
               {
                 this.state.is_playing &&
-                <PauseIcon
-                  onTouchTap={this.__handlePauseClick}
+                <Icon
+                  name="pause"
+                  onTouchTap={this.__handlePauseClick.bind(this)}
                   className='pause-icon'
-                  color={"#505050"}
                   style={{width:"36px", height:'36px'}}>
-                </PauseIcon>
+                </Icon>
               }
-              <SkipNext
-                onTouchTap={this.__handleSkipNextClick}
+              <Icon
+                name="step forward"
+                onTouchTap={this.__handleSkipNextClick.bind(this)}
                 className='skip-next-icon'
-                color={"#505050"}
                 style={{width:"36px", height:'36px'}}>
-              </SkipNext>
+              </Icon>
             </div>
             <div className='lower-tier'>
-              <div className='progress-container' onTouchTap={this.__handleSeekerClick}>
+              <div className='progress-container' onTouchTap={this.__handleSeekerClick.bind(this)}>
                 <div className='progress' style={{width: this.state.progress + '%'}}></div>
                 <div className='buffer'></div>
               </div>
@@ -314,38 +328,44 @@ module.exports = React.createClass({
           </div>
         </div>
         <div className='right-container'>
-          <VolumeMute
-            onTouchTap={this.__handleMuteClick}
+          <Icon
+            name="mute"
+            onTouchTap={this.__handleMuteClick.bind(this)}
             className='volume-mute-icon'
             data-is-muted={this.state.is_muted}
-            color={ this.state.is_muted ? "whitesmoke" : "#505050"}
             style={{width:"24px", height:'24px'}}>
-          </VolumeMute>
-          <div className='volume-slider' onTouchTap={this.__handleVolumeSliderClick}>
+          </Icon>
+          <div className='volume-slider' onTouchTap={this.__handleVolumeSliderClick.bind(this)}>
             <div className='value' style={{width: this.state.volume + '%'}}></div>
           </div>
         </div>
         <div className='arrow-container'>
           {
             this.state.expanded &&
-            <ArrowDown
-              onTouchTap={this.__handleRetractClick}
+            <Icon
+              name='minus'
+              onTouchTap={this.__handleRetractClick.bind(this)}
               className='retract-icon'
-              color={"#505050"}
               style={{width:"24px", height:'24px'}}>
-            </ArrowDown>
+            </Icon>
           }
           {
             !this.state.expanded &&
-            <ArrowUp
-              onTouchTap={this.__handleExpandClick}
+            <Icon
+              name='plus'
+              onTouchTap={this.__handleExpandClick.bind(this)}
               className='expand-icon'
-              color={"#505050"}
               style={{width:"24px", height:'24px'}}>
-            </ArrowUp>
+            </Icon>
           }
         </div>
       </div>
     );
   }
-})
+}
+
+AudioPlayer.defaultProps = {
+  album: [],
+  scrolledDown: false,
+  theme: "light"
+}

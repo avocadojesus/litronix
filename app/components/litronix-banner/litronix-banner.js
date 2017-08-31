@@ -37,9 +37,9 @@ module.exports = React.createClass({
         <div className='logo-container'>
           <img className='logo-img' src='/img/litronix-logo.png' />
           <div className='description'>
-            <div className="text">Pump The Gas out now!</div>
-            <Button>Bandcamp</Button>
-            <Button>Porchparty Records</Button>
+            <h1 className="text">Pump The Gas out now!</h1>
+            <a href="https://litronix.bandcamp.com/releases"><Button>LISTEN</Button></a>
+            <a href="https://porchpartyrecords.bandcamp.com/album/pump-the-gas"><Button>VINYL</Button></a>
           </div>
         </div>
       </div>

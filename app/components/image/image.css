@@ -6,6 +6,7 @@
   margin: 10px;
   background-size: cover;
   cursor: pointer;
+  vertical-align: top;
 }
 
 .native-image[data-is-loading="true"] {

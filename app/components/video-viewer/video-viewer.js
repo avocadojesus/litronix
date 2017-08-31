@@ -25,7 +25,14 @@ module.exports = React.createClass({
         <div className='video-viewer-overlay'></div>
         {this.props.videos.map(function(video, i) {
           return (
-            <Video video_id={video.id} platform={video.platform} key={i} />
+            <Video
+              title={video.title}
+              artist_name={video.artist_name}
+              video_title={video.video_title}
+              video_id={video.id}
+              platform={video.platform}
+              key={i}
+            />
           );
         })}
       </div>

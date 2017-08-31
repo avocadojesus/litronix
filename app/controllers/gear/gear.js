@@ -16,7 +16,7 @@ module.exports = React.createClass({
     };
   },
   componentDidMount: function() {
-    document.title = "Space And Time Studio - Gear"
+    document.title = "Litronix - Gear"
   },
   componentWillUnmount: function() {
 

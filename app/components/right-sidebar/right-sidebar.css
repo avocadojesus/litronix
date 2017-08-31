@@ -17,6 +17,7 @@
   -webkit-box-shadow: -11px 10px 40px 0px rgba(0,0,0,0.20);
   -moz-box-shadow: -11px 10px 40px 0px rgba(0,0,0,0.20);
   box-shadow: -11px 10px 40px 0px rgba(0,0,0,0.20);
+  background: #ff2c2c;
 }
 
 .right-sidebar[data-show='true'] {

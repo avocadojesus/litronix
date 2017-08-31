@@ -1,0 +1,27 @@
+.tour-date {
+  /*-webkit-box-shadow: 2px 2px 11px 0px rgba(0,0,0,0.08);
+  -moz-box-shadow: 2px 2px 11px 0px rgba(0,0,0,0.08);
+  box-shadow: 2px 2px 11px 0px rgba(0,0,0,0.08);*/
+  padding: 10px;
+  margin: 10px 0;
+  /*background: #dadada;*/
+  color: #5d5d5d;
+}
+
+.tour-date .section {
+  display: inline-block;
+  width: 25%;
+}
+
+.tour-date .buy-tickets-container {
+  text-align:right;
+}
+
+.tour-date .buy-tickets-container button {
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  background: #85c7ff;
+  color: #205e92;
+  cursor: pointer;
+}

@@ -20,7 +20,7 @@ module.exports = React.createClass({
     };
   },
   componentDidMount: function() {
-    document.title = "Space + Time - Videos"
+    document.title = "Litronix - Videos"
     var self = this;
   },
   componentDidUpdate: function() {

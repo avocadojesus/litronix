@@ -1,5 +1,5 @@
 .Videos-Controller .videos-main-container {
-  background: black;
+  background: #e0e0e0;
 }
 
 .Videos-Controller .select-filter-by-container {
@@ -31,8 +31,9 @@
 
 .Videos-Controller .item-viewer {
   padding: 30px;
-  width: calc(100% - 60px);
+  width: calc(100%);
   display: inline-block;
+  text-align: center;
 }
 
 .Videos-Controller .item-viewer .album {

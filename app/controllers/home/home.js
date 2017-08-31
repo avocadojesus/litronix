@@ -63,7 +63,6 @@ module.exports = React.createClass({
   componentWillUnmount: function() {
     this.pages_loaded = []
     $(window).unbind('scroll.viewScroll')
-    console.log(this.pages_loaded);
   },
   __handleHeroScrollPass: function() {
     this.setState({scrolledPastHeader: true})
@@ -82,7 +81,7 @@ module.exports = React.createClass({
     PostActions
       .getRemote({
         page: page,
-        adaptor_id: ["spaceandtime_instagram"],
+        adaptor_id: ["litronix_instagram"],
         auth_token: ls.get('auth_token')
       })
       .then(function(posts) {
@@ -113,12 +112,7 @@ module.exports = React.createClass({
     this.setState({
       posts: PostStore.getByAdaptorID(
         [
-          "matt_costa_facebook",
-          "matt_costa_twitter",
-          "spaceandtime_instagram",
-          "matt_costa_youtube",
-          "matt_costa_soundcloud",
-          "matt_costa_posts"
+          "litronix_instagram",
         ]
       )
     })

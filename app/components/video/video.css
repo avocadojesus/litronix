@@ -37,7 +37,7 @@
   display: none;
   position: absolute;
   bottom: 0;
-  width: calc(100% - 20px);
+  width: calc(100%);
 }
 
 .video:hover .txt-container {
@@ -57,4 +57,10 @@
 .video .txt-container .video-artist-name {
   font-size: 16px;
   opacity:.8;
+}
+
+@media(max-width: 800px) {
+  .video {
+    width: 80%;
+  }
 }

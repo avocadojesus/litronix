@@ -6,6 +6,7 @@ var AppActions = require('../../actions/app-actions')
 var AppDispatcher = require('../../dispatchers/app-dispatcher')
 var AppActions = require('../../actions/app-actions')
 var Vimeo = require('react-vimeo')
+var ReactPlayer = require('react-player')
 
 module.exports = React.createClass({
   displayName: 'video-player',
@@ -13,7 +14,9 @@ module.exports = React.createClass({
     return {
       is_visible: false,
       is_playing: false,
-      src: null
+      src: null,
+      vimeo_video_id: null,
+      youtube_video_id: null,
     }
   },
   propTypes: {
@@ -39,6 +42,13 @@ module.exports = React.createClass({
           self.setState({
             is_visible: true,
             vimeo_video_id: payload.action.vimeo_video_id,
+          })
+          setTimeout(() => {AppActions.videoPlay()}, 1)
+          break;
+        case "VIDEO_SET_SRC_FROM_YOUTUBE":
+          self.setState({
+            is_visible: true,
+            youtube_video_id: payload.action.youtube_video_id,
           })
           setTimeout(() => {AppActions.videoPlay()}, 1)
           break;
@@ -73,12 +83,15 @@ module.exports = React.createClass({
     AppActions.videoClose()
   },
   render: function() {
-    var src = "https://player.vimeo.com/video/" + this.state.vimeo_video_id
+    var src;
+    if (this.state.youtube_video_id) src = "https://player.vimeo.com/video/" + this.state.vimeo_video_id
+    if (this.state.vimeo_video_id) src = "https://player.vimeo.com/video/" + this.state.vimeo_video_id
+
     return (
       <div
         className='video-player'
         data-is-visible={this.state.is_visible.toString()}
-        data-is-playing={this.state.is_playing}
+        data-is-playing={this.state.is_playing.toString()}
       >
         <div
           onTouchTap={this.__handleCloseClick}
@@ -101,6 +114,17 @@ module.exports = React.createClass({
               autoplay: "true"
             }}
             />
+        }
+        {
+          this.state.youtube_video_id &&
+          this.state.is_visible &&
+          this.state.is_playing &&
+          <ReactPlayer
+            url={"https://www.youtube.com/watch?v=" + this.state.youtube_video_id}
+            playing={true}
+            width={$(window).width() + 'px'}
+            height={$(window).height() + 'px'}
+          />
         }
       </div>
     )

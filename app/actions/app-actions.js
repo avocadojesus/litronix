@@ -18,10 +18,10 @@ exports.audioVolumeUpdate = function(percent) {
   });
 }
 
-exports.audioPlay = function(track_id) {
+exports.audioPlay = function(track) {
   AppDispatcher.handleAction({
     actionType: "AUDIO_PLAY",
-    track_id: track_id
+    track: track
   });
 }
 
@@ -39,6 +39,12 @@ exports.audioMute = function(value) {
   });
 }
 
+exports.audioMinimize = function() {
+  AppDispatcher.handleAction({
+    actionType: "AUDIO_MINIMIZE"
+  });
+}
+
 exports.audioSetTrackFromSoundcloud = function(track_id) {
   AppDispatcher.handleAction({
     actionType: "AUDIO_SET_TRACK_FROM_SOUNDCLOUD",
@@ -50,6 +56,13 @@ exports.videoSetSourceFromVimeo = function(vimeo_id) {
   AppDispatcher.handleAction({
     actionType: "VIDEO_SET_SRC_FROM_VIMEO",
     vimeo_video_id: vimeo_id
+  });
+}
+
+exports.videoSetSourceFromYoutube = function(youtube_video_id) {
+  AppDispatcher.handleAction({
+    actionType: "VIDEO_SET_SRC_FROM_YOUTUBE",
+    youtube_video_id: youtube_video_id
   });
 }
 

@@ -47,8 +47,8 @@ module.exports = React.createClass({
   },
   render: function() {
     var self = this
-    var title = this.state.username || "Space + Time"
-    if (!this.props.allCaps && !this.state.username) title = "Space + Time"
+    var title = this.state.username || "Litronix"
+    if (!this.props.allCaps && !this.state.username) title = "Litronix"
 
     return (
       <div className={'static-header ' + (this.props.className || "")} data-visible={this.props.visible}>
@@ -71,23 +71,17 @@ module.exports = React.createClass({
             onClick={this.__handleLinkClick}>
             HOME
           </a>
-          <a href='/tour'
+          <a href='/photos'
             data-theme='2'
+            data-active={this.props.activeLink === 'photos'}
+            onClick={this.__handleLinkClick}>
+            PHOTOS
+          </a>
+          <a href='/tour'
+            data-theme='1'
             data-active={this.props.activeLink === 'tour'}
             onClick={this.__handleLinkClick}>
-            VIRTUAL TOUR
-          </a>
-          <a href='/gear'
-            data-theme='3'
-            data-active={this.props.activeLink === 'gear'}
-            onClick={this.__handleLinkClick}>
-            GEAR
-          </a>
-          <a href='/albums'
-            data-theme='1'
-            data-active={this.props.activeLink === 'albums'}
-            onClick={this.__handleLinkClick}>
-            ALBUMS
+            SHOWS
           </a>
           <a href='/videos'
             data-theme='1'
@@ -95,13 +89,18 @@ module.exports = React.createClass({
             onClick={this.__handleLinkClick}>
             VIDEOS
           </a>
-          <a href='/contact'
+          <a href='/bio'
             data-theme='1'
-            data-active={this.props.activeLink === 'contact'}
+            data-active={this.props.activeLink === 'bio'}
             onClick={this.__handleLinkClick}>
+            BIO
+          </a>
+          <a href='mailto:litronixmanagement@gmail.com'
+            data-theme='1'
+            data-active={this.props.activeLink === 'contact'}>
             CONTACT
           </a>
-          <RightSidebarActivator color={this.props.fontColor} />
+          <RightSidebarActivator color={"white"} />
         </div>
       </div>
     )

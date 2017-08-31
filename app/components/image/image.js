@@ -42,7 +42,7 @@ module.exports = React.createClass({
         className='native-image'
         data-is-loading={!this.state.img_loaded}
         onTouchTap={this.props.onTouchTap}
-        data-src={this.props.full_src}>
+        data-src={this.props.full_src || this.props.src}>
         {
           !this.state.img_loaded &&
           <Loader />

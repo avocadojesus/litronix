@@ -25,7 +25,7 @@ module.exports = React.createClass({
     };
   },
   componentDidMount: function() {
-    document.title = "Space + Time - Listen"
+    document.title = "Litronix - Listen"
     var self = this;
     $(window).unbind('scroll.viewScroll')
     $(window).bind('scroll', function(e) {

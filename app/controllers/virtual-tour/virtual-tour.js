@@ -28,7 +28,7 @@ module.exports = React.createClass({
     };
   },
   componentDidMount: function() {
-    document.title = "Space And Time Studio - Virtual Tour"
+    document.title = "Litronix - Virtual Tour"
     AppActions.getVirtualTourImages()
       .then(function(o) {
         this.setState({images: o})
